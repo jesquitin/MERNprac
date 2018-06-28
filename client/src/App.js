@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
-import axios  from "axios";
+import axios from "axios";
 import logo from './logo.svg';
 import './App.css';
 
-
-
 class App extends Component {
-  state ={
+  state = {
     title: "",
-    body:""
+    body: ""
   }
- 
-
   handleInputChange = event => {
-    const value = event.target.value;
-    this.setState({ [name]: value});
 
+      const {name, value} = event.target;
+      console.log(name);
+      this.setState({ [name]: value});
   }
   saveBlog = event =>{
-    event.preventDefault(){;
+    event.preventDefault();
     console.log(this.state.title);
     console.log(this.state.body);
   }
-
   postBlog = event => {
     event.preventDefault();
     const { title, body} = this.state;
@@ -31,16 +27,15 @@ class App extends Component {
       this.setState({ title: "", body: ""});
     })
   }
-  
   render() {
     return (
       <div>
-      <form>
-        <input name="title" onChange={this.handleInputChange}  value={this.state.title} />
-        <textarea name="body" onChange={this.handleInputChange} value={this.state.body} />
-        <button onClick={this.postBlog}>Submit</button>
-      </form>
-    </div>
+        <form>
+          <input name="title" onChange={this.handleInputChange}  value={this.state.title} />
+          <textarea name="body" onChange={this.handleInputChange} value={this.state.body} />
+          <button onClick={this.postBlog}>Submit</button>
+        </form>
+      </div>
     );
   }
 }
